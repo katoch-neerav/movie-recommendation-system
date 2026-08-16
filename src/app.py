@@ -71,13 +71,21 @@ st.write(
 @st.cache_data
 def load_data():
 
-    movies = pd.read_csv(
-        "data/tmdb_5000_movies.csv"
+    movies_url = (
+        "https://huggingface.co/datasets/"
+        "maximus007411/tmdb-5000-movie-data/"
+        "resolve/main/tmdb_5000_movies.csv"
     )
 
-    credits = pd.read_csv(
-        "data/tmdb_5000_credits.csv"
+    credits_url = (
+        "https://huggingface.co/datasets/"
+        "maximus007411/tmdb-5000-movie-data/"
+        "resolve/main/tmdb_5000_credits.csv"
     )
+
+    movies = pd.read_csv(movies_url)
+
+    credits = pd.read_csv(credits_url)
 
     movies = movies.merge(
         credits,
